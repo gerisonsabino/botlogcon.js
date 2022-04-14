@@ -4,11 +4,11 @@ Bot, desenvolvido em JavaScript, para registro de logs sobre o estado atual da c
 https://gerison.net/botlogcon.js/
 
 **Utilidades:**
-- Definir intervalo (em segundos) de registro dos logs
-- Copiar dados no formato Texto
+- Definir intervalo de registro dos logs
+- Copiar registros no formato texto
 - Imprimir
-- Exportar dados em arquivo .txt (formato texto)
-- Exportar dados em arquivo .json (formato JSON)
+- Exportar registros em arquivo .txt (formato texto)
+- Exportar registros em arquivo .json (formato JSON)
 
 **Agradecimentos:**
 
