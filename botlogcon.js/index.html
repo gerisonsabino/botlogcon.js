@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>botlogcon.js • Carregando...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="img/icon-online.ico" rel="icon" type="image/x-icon" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" type="text/javascript" /> 
+    <link href="css/fontawesome/css/all.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/botlogcon.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h2>
+                <i class="fas fa-robot"></i>
+                <label>botlogcon.js</label>
+            </h2>
+            <span>
+                <small>REGISTRAR A CADA: </small>
+                <select id="slc-interval">
+                    <option value="5" selected="selected">05 SEG</option>
+                    <option value="10">10 SEG</option>
+                    <option value="20">20 SEG</option>
+                    <option value="30">30 SEG</option>
+                    <option value="40">40 SEG</option>
+                    <option value="50">50 SEG</option>
+                    <option value="60">01 MIN</option>
+                    <option value="120">02 MIN</option>
+                    <option value="180">03 MIN</option>
+                    <option value="240">04 MIN</option>
+                    <option value="300">05 MIN</option>
+                    <option value="600">10 MIN</option>
+                    <option value="900">15 MIN</option>
+                    <option value="1800">30 MIN</option>
+                    <option value="3600">01 HORA</option>
+                </select>
+            </span>
+        </header>
+        <main>
+            <div id="div-funcs">
+                <button id="btn-copy" type="button">
+                    <i class="far fa-copy"></i>
+                    <label>Copiar</label>
+                </button>
+                <button id="btn-save" type="button">
+                    <i class="far fa-save"></i> 
+                    <label>Salvar</label>
+                </button>
+                <button id="btn-print" type="button">
+                    <i class="fas fa-print"></i>
+                    <label>Imprimir</label>
+                </button>
+                <button id="btn-json" type="button">
+                    <i class="fas fa-laptop-code"></i>
+                    <label>JSON</label>            
+                </button>
+            </div>
+            <div id="div-logs">
+                <ul id="ul-logs">
+                    <li>
+                        <p>CARREGANDO, POR FAVOR AGUARDE...</p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <p>Bot para registro de logs sobre o estado atual da conexão com a internet</p>
+            <p>
+                Desenvolvido por <a href="https://gerison.net" target="_blank">Gérison Sabino</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
