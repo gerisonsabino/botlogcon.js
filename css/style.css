@@ -188,6 +188,14 @@ footer a:hover {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 }
 
+@media (max-width: 576px) {
+    header > span {
+        width: 100%;
+        margin-top: 30px;
+        text-align: right;
+    }
+}
+
 @media print {
     html, 
     body, 
