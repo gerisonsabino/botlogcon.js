@@ -92,7 +92,7 @@ main {
     cursor: pointer;
 }
 
-#div-funcs > button > label {
+#div-funcs > button > span {
     font-size: 10px;
     font-weight: bolder;
     text-transform: uppercase;
@@ -189,10 +189,18 @@ footer a:hover {
 }
 
 @media (max-width: 576px) {
+    header {
+        text-align: center;
+    }
+
+    header > h2 {
+        float: none;
+        width: 100%;
+    }
+
     header > span {
         width: 100%;
         margin-top: 30px;
-        text-align: right;
     }
 }
 

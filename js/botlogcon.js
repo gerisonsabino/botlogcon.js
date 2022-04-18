@@ -1,30 +1,32 @@
 const _queryString = window.location.search;
 const _urlParams = new URLSearchParams(_queryString);
 
-const response = async () => {
+const response = async (url) => {
     try {
-        const url = "https://jsonplaceholder.typicode.com/todos/" + Math.round((Math.random() * 199) + 1).toString();
         const res = await fetch(url);
         return res;
     }
     catch (e) {
-        return false;
+        return {
+            status: 0
+        };
     }
 };
 
-const request = async () => { 
-    let log = createLog(await response()); 
-    
+const request = async () => {
+    let url = "https://jsonplaceholder.typicode.com/todos/" + Math.round((Math.random() * 199) + 1).toString();
+    let log = createLog(url, await response(url));
+
     log.writeLine();
 
-    if (document.getElementById("wrapper").getAttribute("data-online") !== log.response.online.toString()) {
+    if (document.getElementById("wrapper").getAttribute("data-online") !== log.isOnline.toString()) {
         log.setTheme();
     }
-}
+};
 
 function getLogsString() {
     let logs = document.getElementById("ul-logs").getElementsByTagName("li");
-    let txt = "botlogcon.js\nBot para registro de logs sobre o estado atual da conexão com a internet\nDesenvolvido por Gérison Sabino → https://gerison.net\n\n";
+    let txt = "botlogcon.js\n\nRobô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line).\n\nDesenvolvido por Gérison Sabino -> https://gerison.net/\n\n";
 
     for (var i = 0; i < logs.length; i++) {
         txt += logs[i].innerText + "\n";
@@ -33,38 +35,39 @@ function getLogsString() {
     return txt;
 }
 
-function createLog(response) {
+function createLog(url, response) {
     let log = new Object();
     
+    log.id = (document.getElementById("ul-logs").getElementsByTagName("li").length + 1);
+    log.date = new Date();
+    log.isOnline = (response.status >= 200 && response.status < 300);
+
     log.request = {
-        id: (document.getElementById("ul-logs").getElementsByTagName("li").length + 1),
-        date: new Date(),
-        url: response.url
+        url: url
     };
 
     log.response = {
-        code: (response.status == undefined ? 0 : response.status),
-        online: (response.status >= 200 && response.status < 300)
+        code: (response.status == undefined ? 0 : response.status)
     };
 
     log.writeLine = function () {
         let ulLogs = document.getElementById("ul-logs");
         let html = "";
 
-        html += "<li data-online='" + this.response.online + "' data-json='" + JSON.stringify(this) + "'>";
-        html += "   <small>REQ-" + this.request.id.toString().padStart(7, '0') + " - " + this.request.date.toLocaleDateString() + " " + this.request.date.toLocaleTimeString() + " → <strong>(" + this.response.code + ") " + (this.response.online ? "ONLINE" : "OFF-LINE") + "</strong></small>";
+        html += "<li data-online='" + this.isOnline + "' data-json='" + JSON.stringify(this) + "'>";
+        html += "   <small>LOG-" + this.id.toString().padStart(7, '0') + " - " + this.date.toLocaleDateString() + " " + this.date.toLocaleTimeString() + " -> <strong>(" + this.response.code + ") " + (this.isOnline ? "ONLINE" : "OFF-LINE") + "</strong></small>";
         html += "</li>";
     
         ulLogs.innerHTML = (html + ulLogs.innerHTML);
     };
 
     log.setTheme = function () {
-        document.getElementById("wrapper").setAttribute("data-online", (this.response.online ? "true" : "false"));
-        document.getElementsByTagName("title")[0].innerText = "botlogcon.js • " + (this.response.online ? "Online" : "Off-Line");
-        document.getElementsByTagName("link")[0].setAttribute("href", "img/icon-" + (this.response.online ? "online" : "offline") + ".ico");
+        document.getElementById("wrapper").setAttribute("data-online", (this.isOnline ? "true" : "false"));
+        document.getElementsByTagName("title")[0].innerText = "botlogcon.js • " + (this.isOnline ? "Online" : "Off-Line");
+        document.getElementsByTagName("link")[0].setAttribute("href", "img/icon-" + (this.isOnline ? "online" : "offline") + ".ico");
     };
 
-    return log; 
+    return log;
 }
 
 function createFile(text, filename) {
@@ -102,8 +105,8 @@ window.onload = function () {
     });
 
     document.getElementById("btn-copy").addEventListener("click", function() {
-        document.getElementById("btn-copy").getElementsByTagName("label")[0].innerHTML = "Copiado";
-        setTimeout("document.getElementById('btn-copy').getElementsByTagName('label')[0].innerHTML = 'Copiar';", 3000);
+        document.getElementById("btn-copy").getElementsByTagName("span")[0].innerHTML = "Copiado";
+        setTimeout("document.getElementById('btn-copy').getElementsByTagName('span')[0].innerHTML = 'Copiar';", 3000);
 
         let s = getLogsString();
 

@@ -1,9 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <title>botlogcon.js • Carregando...</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-language" content="pt-br" />
+    <meta meta="title" content="botlogcon.js" />
+    <meta name="description" content="Robô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line)." />
+    <meta name="robots" content="all" />
+    <meta name="author" content="Gérison Sabino" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://gerison.net/botlogcon.js/" />
+    <meta property="og:title" content="botlogcon.js" />
+    <meta property="og:site_name" content="botlogcon.js" />
+    <meta property="og:description" content="Robô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line)." />
+    <meta property="og:type" content="website" />
     <link href="img/icon-online.ico" rel="icon" type="image/x-icon" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -11,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" type="text/javascript" /> 
     <link href="css/fontawesome/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="js/botlogcon.js" type="text/javascript"></script>
+    <title>botlogcon.js</title>
 </head>
 <body>
     <div id="wrapper">
@@ -20,7 +31,7 @@
                 <label>botlogcon.js</label>
             </h2>
             <span>
-                <small>REGISTRAR A CADA: </small>
+                <small>LOG A CADA: </small>
                 <select id="slc-interval">
                     <option value="5" selected="selected">05 SEG</option>
                     <option value="10">10 SEG</option>
@@ -36,7 +47,7 @@
                     <option value="600">10 MIN</option>
                     <option value="900">15 MIN</option>
                     <option value="1800">30 MIN</option>
-                    <option value="3600">01 HORA</option>
+                    <option value="3600">01 HR</option>
                 </select>
             </span>
         </header>
@@ -44,19 +55,19 @@
             <div id="div-funcs">
                 <button id="btn-copy" type="button">
                     <i class="far fa-copy"></i>
-                    <label>Copiar</label>
+                    <span>Copiar</span>
                 </button>
                 <button id="btn-save" type="button">
                     <i class="far fa-save"></i> 
-                    <label>Salvar</label>
+                    <span>Salvar</span>
                 </button>
                 <button id="btn-print" type="button">
                     <i class="fas fa-print"></i>
-                    <label>Imprimir</label>
+                    <span>Imprimir</span>
                 </button>
                 <button id="btn-json" type="button">
                     <i class="fas fa-laptop-code"></i>
-                    <label>JSON</label>            
+                    <span>JSON</span>            
                 </button>
             </div>
             <div id="div-logs">
@@ -68,7 +79,7 @@
             </div>
         </main>
         <footer>
-            <p>Bot para registro de logs sobre o estado atual da conexão com a internet</p>
+            <small>Robô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line).</small>
             <p>
                 Desenvolvido por <a href="https://gerison.net" target="_blank">Gérison Sabino</a>
             </p>
