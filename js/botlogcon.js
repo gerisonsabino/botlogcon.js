@@ -2,15 +2,15 @@ const _queryString = window.location.search;
 const _urlParams = new URLSearchParams(_queryString);
 
 const response = async (url) => {
-    try {
-        const res = await fetch(url);
-        return res;
+    if (navigator.onLine) {
+        try {
+            const res = await fetch(url);
+            return res;
+        }
+        catch (e) { }
     }
-    catch (e) {
-        return {
-            status: 0
-        };
-    }
+
+    return { status: 0 };
 };
 
 const request = async () => {
