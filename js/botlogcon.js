@@ -25,14 +25,7 @@ const request = async () => {
 };
 
 function getLogsString() {
-    let logs = document.getElementById("ul-logs").getElementsByTagName("li");
-    let txt = "botlogcon.js\n\nRobô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line).\n\nDesenvolvido por Gérison Sabino -> https://gerison.net/\n\n";
-
-    for (var i = 0; i < logs.length; i++) {
-        txt += logs[i].innerText + "\n";
-    }
-
-    return txt;
+    return "botlogcon.js\n\nRobô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line).\n\nDesenvolvido por Gérison Sabino -> https://gerison.net/\n\n" + document.getElementById("ul-logs").innerText;
 }
 
 function createLog(url, response) {
