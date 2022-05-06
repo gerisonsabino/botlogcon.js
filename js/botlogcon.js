@@ -25,7 +25,7 @@ const request = async () => {
 };
 
 function getLogsString() {
-    return "botlogcon.js\n\nRobô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line).\n\nDesenvolvido por Gérison Sabino -> https://gerison.net/\n\n" + document.getElementById("ul-logs").innerText;
+    return "botlogcon.js\n\nRobô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line).\n\nDesenvolvido por Gérison Sabino -> https://www.gerison.net\n\n" + document.getElementById("ul-logs").innerText;
 }
 
 function createLog(url, response) {
@@ -46,11 +46,11 @@ function createLog(url, response) {
     log.writeLine = function () {
         let ulLogs = document.getElementById("ul-logs");
         let html = "";
-
+        
         html += "<li data-online='" + this.isOnline + "' data-json='" + JSON.stringify(this) + "'>";
-        html += "   <small>LOG-" + this.id.toString().padStart(7, '0') + " - " + this.date.toLocaleDateString() + " " + this.date.toLocaleTimeString() + " -> <strong>(" + this.response.code + ") " + (this.isOnline ? "ONLINE" : "OFF-LINE") + "</strong></small>";
+        html += "   <small>" + this.id.toString().padStart(7, '0') + " - " + this.date.toLocaleDateString() + " " + this.date.toLocaleTimeString() + " -> <strong>(" + this.response.code + ") " + (this.isOnline ? "ONLINE" : "OFF-LINE") + "</strong></small>";
         html += "</li>";
-    
+
         ulLogs.innerHTML = (html + ulLogs.innerHTML);
     };
 
