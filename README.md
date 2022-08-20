@@ -1,7 +1,7 @@
 # botlogcon.js
 Robô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line).
 
-https://gerison.net/botlogcon.js/
+https://gerisonsabino.com/botlogcon.js/
 
 **Utilidades:**
 - Definir intervalo de registro dos logs
