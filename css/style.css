@@ -202,6 +202,10 @@ footer a:hover {
         width: 100%;
         margin-top: 30px;
     }
+
+    #div-funcs {
+        text-align: center;
+    }
 }
 
 @media print {

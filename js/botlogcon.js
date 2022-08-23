@@ -25,7 +25,7 @@ const request = async () => {
 };
 
 function getLogsString() {
-    return "botlogcon.js\n\nRobô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line).\n\nDesenvolvido por Gérison Sabino -> https://www.gerison.net\n\n" + document.getElementById("ul-logs").innerText;
+    return "botlogcon.js\n\nRobô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line).\n\nDesenvolvido por Gérison Sabino -> https://www.gerisonsabino.com\n\n" + document.getElementById("ul-logs").innerText;
 }
 
 function createLog(url, response) {
