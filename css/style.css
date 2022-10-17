@@ -234,4 +234,8 @@ footer a:hover {
     #ul-logs > * {
         font-weight: normal !important;
     }
+
+    footer p:first-child {
+        display: none !important;
+    }
 }
