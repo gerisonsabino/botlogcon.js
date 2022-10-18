@@ -141,10 +141,6 @@ window.onload = () => {
             json.logs.unshift(JSON.parse(logs[i].getAttribute("data-json")));
         }
 
-        //for (var i = (logs.length - 1); i >= 0; i--) {
-        //    json.logs.push(JSON.parse(logs[i].getAttribute("data-json")));
-        //}
-
         createFile(JSON.stringify(json), "botlogcon.js.json");
     });
 };
