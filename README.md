@@ -13,5 +13,6 @@ https://gerisonsabino.com/botlogcon.js/
 **Agradecimentos:**
 
 [JSONPlaceholder](https://jsonplaceholder.typicode.com/) 
+[DummyJSON](https://dummyjson.com/)
 
-Utilizado na requisição que efetua o teste de conexão com a internet.
+Utilizados nas requisições que efetuam o teste de conexão com a internet.
