@@ -160,9 +160,6 @@ body {
 
 #ul-logs li {
     padding: 3px 0;
-}
-
-#ul-logs li:first-child {
     font-weight: bold;
 }
 

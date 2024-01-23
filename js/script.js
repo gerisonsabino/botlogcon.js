@@ -103,7 +103,7 @@
                 BOTLOGCON_JS.logs.engine.setTheme(log);
             },
             writeLine: (log) => {
-                let html = `<li data-online="${log.online}" data-json='${JSON.stringify(log)}'><small>${log.id.toString().padStart(9, "0")} - ${log.date.toLocaleDateString()} ${log.date.toLocaleTimeString()} -> <strong>(${log.res.status}) ${log.online ? "ONLINE" : "OFF-LINE"}</strong></small></li>`;
+                let html = `<li data-online="${log.online}" data-json='${JSON.stringify(log)}'><small>${log.id.toString().padStart(7, "0")} - ${log.date.toLocaleDateString()} ${log.date.toLocaleTimeString()} / <strong>(${log.res.status}) ${log.online ? "ONLINE" : "OFF-LINE"}</strong></small></li>`;
 
                 BOTLOGCON_JS.elements.ul.logs.innerHTML = (html + BOTLOGCON_JS.elements.ul.logs.innerHTML);
             },
