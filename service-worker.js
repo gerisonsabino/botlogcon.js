@@ -29,9 +29,6 @@ let assets = [
     "./img/online.png",
     "./js/bootstrap/bootstrap.min.js",
     "./js/script.js",
-    "./manifest.json",
-    "./service-worker.js",
-    "./index.html",
     "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
 ];
 
