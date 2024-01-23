@@ -1,94 +1,97 @@
 ﻿<!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en-us">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="content-language" content="pt-br" />
+    <meta charset="utf-8" />
+    <meta http-equiv="content-language" content="en-us" />
     <meta meta="title" content="botlogcon.js" />
-    <meta name="description" content="Robô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line)." />
+    <meta name="description" content="Browser-based bot to logging internet connection state (online/off-line)." />
     <meta name="robots" content="all" />
     <meta name="author" content="Gérison Sabino" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:url" content="https://gerison.net/botlogcon.js/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://gerisonsabino.com/botlogcon.js/" />
     <meta property="og:title" content="botlogcon.js" />
     <meta property="og:site_name" content="botlogcon.js" />
-    <meta property="og:description" content="Robô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line)." />
+    <meta property="og:description" content="Browser-based bot to logging internet connection state (online/off-line)." />
     <meta property="og:type" content="website" />
-    <link rel="icon" type="image/x-icon" href="img/icon-online.ico" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" crossorigin="" href="https://fonts.gstatic.com" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" />  
-    <link rel="stylesheet" type="text/css" href="css/fontawesome/css/all.min.css" />
+
+    <link rel="icon" type="image/png" href="img/online.png" />
+    <link rel="manifest" href="manifest.json" />
+
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/fontawesome/css/all.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+
+    <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-YXNCPPFVCW" async></script>
+
     <title>botlogcon.js</title>
 </head>
-<body>
-    <div id="wrapper">
+<body data-online="true">
+    <section id="wrapper" class="m-auto text-center">
         <header>
-            <h2>
-                <i class="fas fa-robot"></i>
-                <label>botlogcon.js</label>
-            </h2>
-            <span>
-                <small>INTERVALO: </small>
-                <select id="slc-interval">
-                    <option value="5">05 SEG</option>
-                    <option value="10">10 SEG</option>
-                    <option value="20">20 SEG</option>
-                    <option value="30">30 SEG</option>
-                    <option value="40">40 SEG</option>
-                    <option value="50">50 SEG</option>
-                    <option value="60" selected="selected">01 MIN</option>
-                    <option value="120">02 MIN</option>
-                    <option value="180">03 MIN</option>
-                    <option value="240">04 MIN</option>
-                    <option value="300">05 MIN</option>
-                    <option value="600">10 MIN</option>
-                    <option value="900">15 MIN</option>
-                    <option value="1800">30 MIN</option>
-                    <option value="3600">01 HR</option>
-                </select>
-            </span>
+            <div>
+                <h3 class="online-highlight">
+                    <i class="fas fa-ethernet"></i>
+                    botlogcon.js
+                </h3>
+                <div>
+                    <strong class="small online-highlight">INTERVAL:&nbsp;</strong>
+                    <select id="slc-interval" class="form-control form-control-sm">
+                        <option value="5">05 SEC</option>
+                        <option value="10">10 SEC</option>
+                        <option value="20">20 SEC</option>
+                        <option value="30">30 SEC</option>
+                        <option value="40">40 SEC</option>
+                        <option value="50">50 SEC</option>
+                        <option value="60" selected="selected">01 MIN</option>
+                        <option value="120">02 MIN</option>
+                        <option value="180">03 MIN</option>
+                        <option value="240">04 MIN</option>
+                        <option value="300">05 MIN</option>
+                        <option value="600">10 MIN</option>
+                        <option value="900">15 MIN</option>
+                        <option value="1800">30 MIN</option>
+                        <option value="3600">01 HRS</option>
+                    </select>
+                </div>
+            </div>
         </header>
-        <main>
-            <div id="div-funcs">
+        <main class="my-4">
+            <div id="div-buttons" class="mb-4">
                 <button id="btn-copy" type="button">
-                    <i class="far fa-copy"></i>
-                    <span>Copiar</span>
+                    <i class="fas fa-clone"></i>
+                    <small>Copy</small>
                 </button>
                 <button id="btn-save" type="button">
-                    <i class="far fa-save"></i> 
-                    <span>Salvar</span>
+                    <i class="fas fa-save"></i>
+                    <small>Save</small>
                 </button>
                 <button id="btn-print" type="button">
                     <i class="fas fa-print"></i>
-                    <span>Imprimir</span>
+                    <small>Print</small>
                 </button>
                 <button id="btn-json" type="button">
-                    <i class="fas fa-laptop-code"></i>
-                    <span>JSON</span>            
+                    <i class="fas fa-scroll"></i>
+                    <small>JSON</small>
                 </button>
             </div>
-            <div id="div-logs">
+            <div>
                 <ul id="ul-logs">
                     <li>
-                        <p>CARREGANDO, POR FAVOR AGUARDE...</p>
+                        <small>Loading, please wait...</small>
                     </li>
                 </ul>
             </div>
         </main>
         <footer>
-            <p>
-                <a href="https://bit.ly/botlogcon" target="_blank">Baixar arquivos para uso off-line</a>
-            </p>
-            <p>
-                <small>Robô (Bot), desenvolvido em JavaScript, para registro de logs sobre o estado atual da conexão com a internet (online/off-line).</small>
-            </p>
-            <p>
-                Desenvolvido por <a href="https://www.gerisonsabino.com" target="_blank">Gérison Sabino</a>
-            </p>
+            <small id="sm-desc">Browser-based bot to logging internet connection state (online/off-line).</small>
+            <hr />
+            <label id="lbl-made">Made with &#9749; by</label>&nbsp;<a href="https://www.gerisonsabino.com/?ref=botlogcon.js" target="_blank" class="online-highlight">Gérison Sabino</a>
+            <br />
+            <small>This is a non-profit project and is licensed under open source terms on <a href="https://github.com/gerisonsabino/botlogcon.js" target="_blank" class="online-highlight small">GitHub</a>.</small>
         </footer>
-    </div>
-    <script type="text/javascript" src="js/botlogcon.js"></script>
+    </section>
+    <script type="text/javascript" src="js/script.js" defer></script>
 </body>
 </html>
