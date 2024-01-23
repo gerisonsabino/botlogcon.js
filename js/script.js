@@ -199,11 +199,6 @@
 };
 
 window.addEventListener("load", () => {
-    if ('serviceWorker' in navigator) 
-        navigator.serviceWorker.register('./service-worker.js');
-    else
-        console.log("Service worker is not supported");
-
     window.dataLayer = window.dataLayer || [];
 
     function gtag() {
