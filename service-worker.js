@@ -1,5 +1,5 @@
-const CACHE_NAME = "botlogcon.js";
-const CACHE_WHITE_LIST = ["botlogcon.js"];
+const CACHE_NAME = "botlogconjs";
+const CACHE_WHITE_LIST = ["botlogconjs"];
 
 let assets = [
     "./",

@@ -5,8 +5,8 @@
   "theme_color": "#11100f",
   "background_color": "#11100f",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "https://gerisonsabino.com/botlogcon.js/",
+  "start_url": "https://gerisonsabino.com/botlogcon.js/",
   "icons": [
     {
       "src": "img/icons/192x192.png",
