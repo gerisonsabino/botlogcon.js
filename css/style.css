@@ -109,7 +109,7 @@ body {
 }
 
 #wrapper main {
-    padding: 2em;
+    padding: 2em 0.5em;
     overflow: auto;
     border-radius: 12px;
     background-color: var(--background-secondary);
@@ -118,7 +118,7 @@ body {
 
 #wrapper main > div {
     overflow: auto;
-    max-height: 300px;
+    max-height: 250px;
 }
 
 #div-buttons button {
@@ -148,7 +148,12 @@ body {
     opacity: 1;
 }
 
+#ul-last-time,
 #ul-logs {
+    font-family: monospace;
+}
+
+#wrapper main ul {
     opacity: 0.8;
     text-align: center;
     text-transform: uppercase;
@@ -158,16 +163,15 @@ body {
     color: #ffffff;
 }
 
-#ul-logs li {
+#wrapper main ul li {
     padding: 3px 0;
-    font-weight: bold;
 }
 
-#ul-logs li[data-online='true'] strong {
+#wrapper main ul li[data-online='true'] strong {
     color: var(--highlight-online);
 }
 
-#ul-logs li[data-online='false'] strong {
+#wrapper main ul li[data-online='false'] strong {
     color: var(--highlight-offline);
 }
 

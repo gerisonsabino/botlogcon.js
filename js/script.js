@@ -14,7 +14,8 @@
             json: document.getElementById("btn-json")
         },
         ul: {
-            logs: document.getElementById("ul-logs")
+            lastTime: document.getElementById("ul-last-time"),
+            logs: document.getElementById("ul-logs"),
         },
         small: {
             desc: document.getElementById("sm-desc"),
@@ -92,18 +93,19 @@
                 document.body.removeChild(a);
             },
             record: async () => {
+                let index = (BOTLOGCON_JS.elements.ul.logs.getElementsByTagName("li").length + 1);
                 let date = new Date();
-                let res = await BOTLOGCON_JS.logs.engine.request();
-                let id = (BOTLOGCON_JS.elements.ul.logs.getElementsByTagName("li").length + 1);
-                let online = (res.ok && (res.status >= 200 && res.status < 300));
+                let response = await BOTLOGCON_JS.logs.engine.request();
+                let online = (response.ok && (response.status >= 200 && response.status < 300));
 
-                let log = { date, res, id, online };
+                let log = { index, date, response, online };
 
                 BOTLOGCON_JS.logs.engine.writeLine(log);
                 BOTLOGCON_JS.logs.engine.setTheme(log);
+                BOTLOGCON_JS.logs.engine.setLastTime(log);
             },
             writeLine: (log) => {
-                let html = `<li data-online="${log.online}" data-json='${JSON.stringify(log)}'><small>${log.id.toString().padStart(7, "0")} - ${log.date.toLocaleDateString()} ${log.date.toLocaleTimeString()} / <strong>(${log.res.status}) ${log.online ? "ONLINE" : "OFF-LINE"}</strong></small></li>`;
+                let html = `<li data-online="${log.online}" data-json='${JSON.stringify(log)}' class="small"><small>${log.index.toString().padStart(7, "0")} - ${log.date.toLocaleDateString()} ${log.date.toLocaleTimeString()} / <strong>(${log.response.status}) ${log.online ? "ONLINE" : "OFF-LINE"}</strong></small></li>`;
 
                 BOTLOGCON_JS.elements.ul.logs.innerHTML = (html + BOTLOGCON_JS.elements.ul.logs.innerHTML);
             },
@@ -112,6 +114,12 @@
 
                 document.title = `botlogcon.js | ${(log.online ? "Online" : "Off-Line")}`;
                 document.querySelector("link[rel='icon']").setAttribute("href", "img/" + (log.online ? "online" : "offline") + ".png");
+            },
+            setLastTime: (log) => {
+                let html = `<small>LAST TIME ${log.online ? "ONLINE" : "OFF-LINE"}: ${log.index.toString().padStart(7, "0") } - ${new Date(log.date).toLocaleDateString()} ${new Date(log.date).toLocaleTimeString()}</strong></small>`;
+
+                BOTLOGCON_JS.elements.ul.lastTime.querySelector("li[data-online='" + log.online + "']").setAttribute("data-json", JSON.stringify(log));
+                BOTLOGCON_JS.elements.ul.lastTime.querySelector("li[data-online='" + log.online + "']").innerHTML = html;
             }
         },
         copy: () => {
@@ -143,17 +151,18 @@
             setClipboardData(s);
         },
         toString: () => {
-            return `botlogcon.js\n\n${BOTLOGCON_JS.elements.small.desc.innerText}\nMade by Gérison Sabino -> https://www.gerisonsabino.com\n\n${BOTLOGCON_JS.elements.ul.logs.innerText}`;
+            return `botlogcon.js\n${BOTLOGCON_JS.elements.small.desc.innerText}\nMade by Gérison Sabino -> https://www.gerisonsabino.com\n\n${BOTLOGCON_JS.elements.ul.lastTime.innerText}\n\n${BOTLOGCON_JS.elements.ul.logs.innerText}`;
         },
         toJson: () => {
             let json = { logs: new Array() };
+
             let logs = BOTLOGCON_JS.elements.ul.logs.getElementsByTagName("li");
 
             for (let log of logs) {
                 json.logs.unshift(JSON.parse(log.getAttribute("data-json")));
             }
 
-            return `//botlogcon.js\n//${BOTLOGCON_JS.elements.small.desc.innerText}\n//Made by Gérison Sabino -> https://www.gerisonsabino.com\n${JSON.stringify(json)}`;
+            return `/*botlogcon.js\n${BOTLOGCON_JS.elements.small.desc.innerText}\nMade by Gérison Sabino -> https://www.gerisonsabino.com*/\n${JSON.stringify(json)}`;
         }
     },
     run: () => {
