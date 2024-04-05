@@ -1,5 +1,4 @@
 const CACHE_NAME = "botlogconjs";
-const CACHE_WHITE_LIST = ["botlogconjs"];
 
 let assets = [
     "./",
@@ -44,20 +43,6 @@ self.addEventListener("fetch", e => {
     e.respondWith(
         caches.match(e.request).then(response => {
             return response || fetch(e.request);
-        })
-    );
-});
-
-self.addEventListener("activate", event => {
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (CACHE_WHITE_LIST.indexOf(cacheName) === -1) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
         })
     );
 });
